@@ -11,13 +11,8 @@ class Home extends React.Component {
   static async getInitialProps(ctx) {
     const res = await fetch('http://localhost:3000/api/pytte');
     const data = await res.json();
-    console.log(data);
-    return {
-      cards: data
-    }
+    return { cards: data }
   }
-  
-  setCard = () => {}
   
   render() {
     return (
@@ -25,9 +20,8 @@ class Home extends React.Component {
         <header className="App-header">
           <Note />
         </header>
-        <button value={"Update"} onClick={this.getCards}/>
-        <h1>Cards in terwfdtgfgd:</h1>
-        <div>
+        <h1>Cards in database:</h1>
+        <div className={"cardsContainer"}>
           {this.props.cards.map(entry => 
             <Card front={entry.front} back={entry.back}/>
           )}

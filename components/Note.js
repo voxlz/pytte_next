@@ -15,6 +15,27 @@ class Note extends React.Component {
     this.setState({[nam]: val});
   }
 
+  saveCard = async () => {
+    const card = {
+      userId: "",  
+      deckId: "", 
+      noteId: "", 
+      front: this.state.front, 
+      back: this.state.back,
+      dependencies: "",
+      conflicts: ""
+    };
+
+    const res = await fetch('http://localhost:3000/api/pytte', {
+      method: 'post',
+      body: JSON.stringify(card)
+    })
+
+    alert("Saved card");
+    //console.log("Created post request:")
+    //console.log(res);
+  }
+
   render() {
     return (
       <div className="noteContainer">
@@ -28,7 +49,8 @@ class Note extends React.Component {
 
         <h2>This note will generate these cards:</h2>
         <Card front={this.state.front} back={this.state.back}/>
-        <button onClick={this.insertCardIntoDb}>Save Card</button>
+        <br></br>
+        <button onClick={this.saveCard}>Save Card</button>
       </div>
     );
   }

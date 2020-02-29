@@ -18,6 +18,7 @@ handler.get(async (req, res) => {
     
         db.collection(colName).find({}).toArray().then((docs) => {
             res.json(docs);
+            console.log("got all cards in database");
             console.log(docs);
         }).catch((err) => {
             console.log(err);
@@ -26,5 +27,25 @@ handler.get(async (req, res) => {
         });
     });
 });
+
+handler.post(async (req, res) => {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
+        if (err) throw err;
+        const db = client.db(dbName);
+
+        let doc = req.body
+        doc = JSON.parse(doc);
+    
+        db.collection(colName).insertOne(doc).then((doc) => {
+            console.log('Card inserted!');
+            //console.log(doc);
+            res.json({message: 'ok'});
+        }).catch((err) => {
+            console.log(err);
+        }).finally(() => {
+            client.close();
+        });
+    });
+})
 
 export default (req, res) => handler.apply(req, res);
