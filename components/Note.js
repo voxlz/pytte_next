@@ -15,33 +15,6 @@ class Note extends React.Component {
     this.setState({[nam]: val});
   }
 
-  insertCardIntoDb = (event) => {
-    var MongoClient = require('mongodb').MongoClient;
-    var dbName = "pytte";
-    var collectionName = "cards";
-    var url = "mongodb+srv://voxlse:JPqFU6hlVye1dEUQ@firstcluster-odi0h.mongodb.net/test?retryWrites=true&w=majority";
-
-    var card = { 
-      userId: "",  
-      deckId: "", 
-      noteId: "", 
-      front: "bruh", 
-      back: "nuh2",
-      dependencies: "",
-      conflicts: ""
-    };
-
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db(dbName);
-      dbo.collection(collectionName).insertOne(card, function(err, res) {
-        if (err) throw err;
-        console.log("1 card inserted");
-        db.close();
-      });
-    });
-  }
-
   render() {
     return (
       <div className="noteContainer">
@@ -59,10 +32,6 @@ class Note extends React.Component {
       </div>
     );
   }
-}
-
-Note.getInitialProps = async function() {
-  
 }
 
 export default Note
