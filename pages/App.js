@@ -1,6 +1,8 @@
-import Note from '../components/Note.js'
+import React from 'react';
+import Note from './Note';
+import './App.scss';
 
-export default function Home() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -8,5 +10,7 @@ export default function Home() {
       </header>
       <h1>Cards in database:</h1>
     </div>
-  )
+    <style jsx>{'
+    '}</style>
+  );
 }
