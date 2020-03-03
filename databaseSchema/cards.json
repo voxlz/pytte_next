@@ -1,0 +1,15 @@
+{
+    "front": "frontDefault", 
+    "back": "backDefault", 
+    "tags": [],
+    "dependencies": ["AAAA", "BBBB"],
+    "similarities": ["CCCC", "DDDD"],
+    "dueDate": "DATE", 
+    "reviews": [
+        {"date": "date1", "status": "rememberd"},
+        {"date": "date2", "status": "forgot"}
+    ],
+    "lastChanged": "Date",
+    "dateCreated": "Date",
+    "creator": "userId"
+}

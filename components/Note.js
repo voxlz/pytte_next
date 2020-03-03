@@ -1,4 +1,5 @@
 import Card from './Card.js';
+import defaultCard from  '../databaseSchema/cards.json';
 
 class Note extends React.Component {
   constructor(props) {
@@ -16,15 +17,7 @@ class Note extends React.Component {
   }
 
   saveCard = async () => {
-    const card = {
-      userId: "",  
-      deckId: "", 
-      noteId: "", 
-      front: this.state.front, 
-      back: this.state.back,
-      dependencies: "",
-      conflicts: ""
-    };
+    const card = defaultCard;
 
     const res = await fetch('http://localhost:3000/api/pytte', {
       method: 'post',
@@ -32,8 +25,6 @@ class Note extends React.Component {
     })
 
     alert("Saved card");
-    //console.log("Created post request:")
-    //console.log(res);
   }
 
   render() {

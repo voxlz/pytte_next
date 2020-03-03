@@ -1,0 +1,11 @@
+{
+    "name": "noteName1",
+    "lastChanged": "Date",
+    "dateCreated": "Date",
+    "creator": "userId",
+    "fields": [
+        {"name": "fieldName1", "relations": ["fieldName2", "fieldName3"]},
+        {"name": "fieldName2", "relations": []},
+        {"name": "fieldName3", "relations": ["fieldName1"]}
+    ]
+}

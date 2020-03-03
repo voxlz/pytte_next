@@ -1,0 +1,8 @@
+{
+    "userName": "",
+    "passwordHash": "",
+    "email": "",
+    "noteIds": ["AAAA", "BBBB"],
+    "deckIds": ["AAAA", "BBBB"],
+    "accountCreated": "date"
+}
