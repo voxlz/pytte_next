@@ -18,7 +18,7 @@ handler.get(async (req, res) => {
     
         db.collection(colName).findOne().then((doc) => {
             res.json(doc);
-            console.log("Fetched a deck");
+            console.log("Fetched a note");
             console.log(doc);
         }).catch((err) => {
             console.log(err);
@@ -37,8 +37,8 @@ handler.post(async (req, res) => {
         let doc = req.body
         doc = JSON.parse(doc);
     
-        db.collection(colName).updateOne(doc[_id], doc).then((doc) => {
-            console.log('Deck Updated!');
+        db.collection(colName).updateOne({"_id": doc[_id]}, doc).then((doc) => {
+            console.log('Note Updated!');
             res.json({message: 'ok'});
         }).catch((err) => {
             console.log(err);

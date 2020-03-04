@@ -1,11 +1,30 @@
-{
-    "name": "noteName1",
-    "lastChanged": "Date",
-    "dateCreated": "Date",
-    "creator": "userId",
+[{
+    "name": "regular card",
+    "lastChanged": "",
+    "dateCreated": "",
+    "creator": "",
     "fields": [
-        {"name": "fieldName1", "relations": ["fieldName2", "fieldName3"]},
-        {"name": "fieldName2", "relations": []},
-        {"name": "fieldName3", "relations": ["fieldName1"]}
+        {"name": "prompt", "relations": ["answer"]},
+        {"name": "answer", "relations": ["prompt"]}
     ]
-}
+},{
+    "name": "triangle card",
+    "lastChanged": "",
+    "dateCreated": "",
+    "creator": "",
+    "fields": [
+        {"name": "side1", "relations": ["side2"]},
+        {"name": "side2", "relations": ["side3"]},
+        {"name": "side3", "relations": ["side1"]}
+    ]
+},{
+    "name": "one-to-two",
+    "lastChanged": "",
+    "dateCreated": "",
+    "creator": "",
+    "fields": [
+        {"name": "prompt", "relations": ["answer1", "answer2"]},
+        {"name": "answer1", "relations": []},
+        {"name": "answer2", "relations": []}
+    ]
+}]

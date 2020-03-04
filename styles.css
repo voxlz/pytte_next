@@ -1,6 +1,14 @@
 html {
-  text-align: center;
+  text-align: left;
   background-color: #282c34;
+}
+
+body {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 .App-header {

@@ -37,7 +37,7 @@ handler.post(async (req, res) => {
         let doc = req.body
         doc = JSON.parse(doc);
     
-        db.collection(colName).updateOne(doc[_id], doc).then((doc) => {
+        db.collection(colName).updateOne({"_id": doc[_id]}, doc).then((doc) => {
             console.log('Deck Updated!');
             res.json({message: 'ok'});
         }).catch((err) => {
