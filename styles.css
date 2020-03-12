@@ -1,18 +1,21 @@
 html {
-  text-align: left;
   background-color: #282c34;
+  color: white;
+  padding: 0;
+  overflow: hidden; /* Hide scrollbars */
 }
-
+a {
+  color: #61dafb;
+}
 body {
   margin: 0;
 }
-
 div {
   box-sizing: border-box;
+  padding: 10px;
 }
-
-.App-header {
-  min-height: 100vh;
+/*.App-header {
+  /*min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,55 +23,9 @@ div {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
 .noteContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.cardsContainer {
-  perspective: 1500px;
-  perspective-origin: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.cards {
-  height: 250px;
-  width: 250px;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
-  margin: 10px;
-}
-
-.card {
-  background-color: white;
-  height: 100%;
-  width: 100%;
-  border-radius: 20px;
-  position: absolute;
-} 
-
-.flipped {
-  transform: rotateY(180deg);
-}
-
-.front {
-  background-color: white;
-}
-.back {
-  background-color: white;
-  transform: rotateY(180deg);
-}
-
-.card p {
-  color: black;
-  font-size: calc(10px + 2vmin);
-}
+}*/

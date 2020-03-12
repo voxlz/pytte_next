@@ -16,10 +16,10 @@ handler.get(async (req, res) => {
         if (err) throw err;
         const db = client.db(dbName);
     
-        db.collection(colName).findOne().then((doc) => {
-            res.json(doc);
-            console.log("Fetched a deck");
-            console.log(doc);
+        db.collection(colName).find({}).toArray().then((docs) => {
+            res.json(docs);
+            console.log("Fetched all decks");
+            console.log(docs);
         }).catch((err) => {
             console.log(err);
         }).finally(() => {

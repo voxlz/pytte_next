@@ -3,32 +3,45 @@ import middleware from '../../middleware/database';
 import config from '../../config.json';
 
 const handler = nextConnect();
+handler.use(middleware);
+
 const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const url = config["DB_URL"];
 const dbName = 'pytte';
-const colName = 'notes';
-
-handler.use(middleware);
+const colName = 'cards';
 
 handler.get(async (req, res) => {
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
         if (err) throw err;
         const db = client.db(dbName);
     
-        db.collection(colName).findOne().then((doc) => {
-            res.json(doc);
-            console.log("Fetched a note");
-            console.log(doc);
-        }).catch((err) => {
-            console.log(err);
-        }).finally(() => {
-            client.close();
-        });
+        const { deck } = req.query;
+
+        if (deck) {
+            db.collection(colName).find({deckId: deck}).toArray().then((docs) => {
+                res.json(docs);
+                console.log("got all cards in database");
+                console.log(docs);
+            }).catch((err) => {
+                console.log(err);
+            }).finally(() => {
+                client.close();
+            });
+        } else {
+            db.collection(colName).find({}).toArray().then((docs) => {
+                res.json(docs);
+                console.log("got all cards in database");
+                console.log(docs);
+            }).catch((err) => {
+                console.log(err);
+            }).finally(() => {
+                client.close();
+            });
+        }
     });
 });
 
-// Update deck
 handler.post(async (req, res) => {
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
         if (err) throw err;
@@ -37,8 +50,9 @@ handler.post(async (req, res) => {
         let doc = req.body
         doc = JSON.parse(doc);
     
-        db.collection(colName).updateOne({"_id": doc[_id]}, doc).then((doc) => {
-            console.log('Note Updated!');
+        db.collection(colName).insertOne(doc).then((doc) => {
+            console.log('Card inserted!');
+            //console.log(doc);
             res.json({message: 'ok'});
         }).catch((err) => {
             console.log(err);

@@ -3,13 +3,13 @@ import middleware from '../../middleware/database';
 import config from '../../config.json';
 
 const handler = nextConnect();
-handler.use(middleware);
-
 const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const url = config["DB_URL"];
 const dbName = 'pytte';
-const colName = 'cards';
+const colName = 'notes';
+
+handler.use(middleware);
 
 handler.get(async (req, res) => {
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
@@ -18,7 +18,7 @@ handler.get(async (req, res) => {
     
         db.collection(colName).find({}).toArray().then((docs) => {
             res.json(docs);
-            console.log("got all cards in database");
+            console.log("Fetched all templates");
             console.log(docs);
         }).catch((err) => {
             console.log(err);
@@ -28,6 +28,7 @@ handler.get(async (req, res) => {
     });
 });
 
+// Update deck
 handler.post(async (req, res) => {
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
         if (err) throw err;
@@ -36,9 +37,8 @@ handler.post(async (req, res) => {
         let doc = req.body
         doc = JSON.parse(doc);
     
-        db.collection(colName).insertOne(doc).then((doc) => {
-            console.log('Card inserted!');
-            //console.log(doc);
+        db.collection(colName).updateOne({"_id": doc[_id]}, doc).then((doc) => {
+            console.log('Note Updated!');
             res.json({message: 'ok'});
         }).catch((err) => {
             console.log(err);

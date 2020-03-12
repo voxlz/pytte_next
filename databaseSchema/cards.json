@@ -1,15 +1,15 @@
 {
-    "front": "frontDefault", 
-    "back": "backDefault", 
+    "deckId": "",
+    "frontText": "", 
+    "backText": "", 
     "tags": [],
-    "dependencies": ["AAAA", "BBBB"],
-    "similarities": ["CCCC", "DDDD"],
-    "dueDate": "DATE", 
+    "dependencies": [],
+    "similarities": [],
+    "dateCreated": "",
+    "dateLearned": "",
+    "dateNextRev": "", 
     "reviews": [
-        {"date": "date1", "status": "rememberd"},
-        {"date": "date2", "status": "forgot"}
-    ],
-    "lastChanged": "Date",
-    "dateCreated": "Date",
-    "creator": "userId"
+        {"date": "date", "status": "rememberd"},
+        {"date": "date", "status": "forgot"}
+    ]
 }
