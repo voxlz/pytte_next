@@ -25,5 +25,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # config
-config.json
 .now
+now.json
+config.json
+.*
+next.*

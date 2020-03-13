@@ -1,7 +1,9 @@
-import { MongoClient } from 'mongodb';
 import nextConnect from 'next-connect';
+import config from '../config.json';
 
-const client = new MongoClient('mongodb+srv://voxlse:JPqFU6hlVye1dEUQ@firstcluster-odi0h.mongodb.net/test?retryWrites=true&w=majority', {
+const url = config["DB_URL"];
+
+const client = require('mongodb').MongoClient(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

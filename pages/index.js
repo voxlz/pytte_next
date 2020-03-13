@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link';
+import PropTypes from 'prop-types';
+
 
 class Home extends React.Component {
   static async getInitialProps() {
@@ -17,7 +19,7 @@ class Home extends React.Component {
           <div>
             <h2>List of all decks:</h2>
             {this.props.decks.map(entry => 
-              <Deck id={entry._id} name={entry.name}/>
+              <Deck key="" id={entry._id} name={entry.name}/>
             )}
           </div>
           <div id="links">
@@ -35,6 +37,10 @@ class Home extends React.Component {
     )
   }
 }
+
+Home.propTypes = {
+  decks: PropTypes.string.isRequired,
+};
 
 class Deck extends React.Component {
   render() {
@@ -59,5 +65,10 @@ class Deck extends React.Component {
     )
   }
 }
+
+Deck.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default Home;

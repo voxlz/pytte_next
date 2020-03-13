@@ -15,6 +15,7 @@ class Add extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.generateFields = this.generateFields.bind(this);
   }
 
   static async getInitialProps() {
@@ -73,7 +74,7 @@ class Add extends React.Component {
     alert(counter + ' cards where added!');
   }
 
-  generateFields = () => {
+  generateFields() {
     var fieldCounter = 0;
 
     return (
@@ -131,10 +132,6 @@ class Add extends React.Component {
         `}</style>
       </div>
     );
-  };
-
-  addCards = async () => {
-
   };
 
   render() {
